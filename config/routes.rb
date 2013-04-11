@@ -1,4 +1,7 @@
 RlsTst::Application.routes.draw do
+  resources :addresses
+
+
   resources :contacts
 
 
