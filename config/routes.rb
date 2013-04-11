@@ -1,9 +1,15 @@
 RlsTst::Application.routes.draw do
-  resources :addresses
+  
 
 
-  resources :contacts
+  resources :countries
 
+
+  resources :contacts do
+    resources :addresses
+  end
+
+  root to:'contacts#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
