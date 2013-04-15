@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>First name:</b>
+  <%= @contact.first_name %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%= @contact.last_name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @contact.email %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @contact.phone %>
+</p>
+<table width = "450px">
+<tr> 
+<th> Street </th>
+<th> City </th>
+<th> Region </th>
+<th> Zip </th>
+<th> Country </th>
+</tr>
+
+	<% @contact.addresses.each do |address| %>
+		<tr>
+			<td> <%= address.street %></td>
+			<td> <%= address.city %> </td>
+			<td> Region goes here </td>
+			<td> <%= address.zip %> </td>
+			<td> <%= address.country %> </td>
+		</tr>	
+	<% end %>
+</table>
+<!-- "/n" address.country "/n" address.zip -->
+
+
+<%= link_to 'Edit', edit_contact_path(@contact) %> |
+<%= link_to 'Back', contacts_path %>

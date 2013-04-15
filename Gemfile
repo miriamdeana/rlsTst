@@ -6,7 +6,10 @@ gem 'rails', '3.2.11'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'capybara'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -21,6 +24,10 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+
+# Used for showing better errors on the Rails Error Screen
+  gem 'better_errors'
+  gem 'binding_of_caller'
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
