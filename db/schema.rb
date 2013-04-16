@@ -29,9 +29,9 @@ ActiveRecord::Schema.define(:version => 20130416142242) do
     t.string   "last_name"
     t.string   "email"
     t.string   "phone"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-    t.integer  "address_count"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "addresses_count"
   end
 
   create_table "contacts_groups", :id => false, :force => true do |t|

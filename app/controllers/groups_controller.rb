@@ -27,6 +27,7 @@ class GroupsController < ApplicationController
   def new
     @group = Group.new
     @contacts = Contact.all
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @group }
@@ -42,14 +43,9 @@ class GroupsController < ApplicationController
   # POST /groups
   # POST /groups.json
   def create
-    # con_ids = params[:group]
-  
+    params[:group][:contact_ids] ||= [] 
     @group = Group.new(params[:group])
-    # @group = Group.new
-    # puts "************************"
-    # puts "contact ids of group before #{@group.contact_ids}"
-    # puts "************************"
-    # @group.contact_ids = con_ids[:contact_ids]
+   
 
     respond_to do |format|
       if @group.save

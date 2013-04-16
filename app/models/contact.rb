@@ -4,7 +4,7 @@ class Contact < ActiveRecord::Base
   validates :email, :uniqueness => true
   has_many :addresses
   has_and_belongs_to_many :groups
-  scope :without_addresses, where(address_count: 0)
+  scope :without_addresses, where(addresses_count: 0)
 
   def full_name
     "#{first_name} #{last_name}"

@@ -15,6 +15,8 @@ class AddressesController < ApplicationController
   def show
     @address = Address.find(params[:id])
 
+    @contact = Contact.find(params[:contact_id])
+   
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @address }
@@ -24,8 +26,11 @@ class AddressesController < ApplicationController
   # GET /addresses/new
   # GET /addresses/new.json
   def new
-    @address = Address.new
+    @contact = Contact.find(params[:contact_id])
 
+    
+    @address = Address.new
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @address }
@@ -40,11 +45,13 @@ class AddressesController < ApplicationController
   # POST /addresses
   # POST /addresses.json
   def create
-    @address = Address.new(params[:address])
-
+    @contact = Contact.find(params[:contact_id])
+    @address = @contact.addresses.new({ :contact_id => params[:contact_id], :street => params[:address][:street], :city => params[:address][:city], :zip => params[:address][:zip], :region => params[:address][:region], :country => params[:country][:code]})
+    
+    
     respond_to do |format|
       if @address.save
-        format.html { redirect_to @address, notice: 'Address was successfully created.' }
+        format.html { redirect_to @contact, notice: 'Address was successfully created.' }
         format.json { render json: @address, status: :created, location: @address }
       else
         format.html { render action: "new" }
@@ -56,6 +63,7 @@ class AddressesController < ApplicationController
   # PUT /addresses/1
   # PUT /addresses/1.json
   def update
+    
     @address = Address.find(params[:id])
 
     respond_to do |format|

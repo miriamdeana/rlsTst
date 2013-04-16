@@ -24,7 +24,7 @@ class ContactsController < ApplicationController
   # GET /contacts/new.json
   def new
     @contact = Contact.new
-
+    @address = Address.new
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @contact }
@@ -34,13 +34,13 @@ class ContactsController < ApplicationController
   # GET /contacts/1/edit
   def edit
     @contact = Contact.find(params[:id])
+ #   @address = Contact.find(params[:address])
   end
 
   # POST /contacts
   # POST /contacts.json
   def create
     @contact = Contact.new(params[:contact])
-
     respond_to do |format|
       if @contact.save
         format.html { redirect_to @contact, notice: 'Contact was successfully created.' }

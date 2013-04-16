@@ -10,6 +10,7 @@ RlsTst::Application.routes.draw do
 
   resources :contacts do
     resources :addresses
+    
   end
 
   root to:'contacts#index'

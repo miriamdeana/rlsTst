@@ -1,5 +1,5 @@
 class AddCountToContact < ActiveRecord::Migration
   def change
-    add_column :contacts, :address_count, :integer
+    add_column :contacts, :addresses_count, :integer
   end
 end
