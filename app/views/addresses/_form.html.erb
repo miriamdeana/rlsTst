@@ -25,7 +25,7 @@
   </div>
   <div class="field">
     <%= f.label :country %><br />
-    <%= f.text_field :country %>
+    <%= collection_select(:country, :country_id, Country.all, :id, :code) %>
   </div>
   <div class="actions">
     <%= f.submit %>

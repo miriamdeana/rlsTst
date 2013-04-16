@@ -3,6 +3,7 @@ class GroupsController < ApplicationController
   # GET /groups.json
   def index
     @groups = Group.all
+    @contacts = Contact.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,7 +26,7 @@ class GroupsController < ApplicationController
   # GET /groups/new.json
   def new
     @group = Group.new
-
+    @contacts = Contact.all
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @group }
@@ -35,12 +36,20 @@ class GroupsController < ApplicationController
   # GET /groups/1/edit
   def edit
     @group = Group.find(params[:id])
+    @contacts = Contact.all
   end
 
   # POST /groups
   # POST /groups.json
   def create
+    # con_ids = params[:group]
+  
     @group = Group.new(params[:group])
+    # @group = Group.new
+    # puts "************************"
+    # puts "contact ids of group before #{@group.contact_ids}"
+    # puts "************************"
+    # @group.contact_ids = con_ids[:contact_ids]
 
     respond_to do |format|
       if @group.save

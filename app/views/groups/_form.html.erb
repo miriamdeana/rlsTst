@@ -15,6 +15,18 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
+
+  <div class = "contact_choices">
+    <% @contacts.each do |contact| %>
+      <p>
+        <%= check_box_tag "group[contact_ids][]", contact.id, @group.contacts.include?(contact) %>
+
+      </p>
+      <p>
+        <%= contact.full_name %>
+      </p>
+    <% end %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
