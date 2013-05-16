@@ -40,6 +40,7 @@ class AddressesController < ApplicationController
   # GET /addresses/1/edit
   def edit
     @address = Address.find(params[:id])
+    @contact = Contact.find(params[:contact_id])
   end
 
   # POST /addresses
@@ -63,12 +64,12 @@ class AddressesController < ApplicationController
   # PUT /addresses/1
   # PUT /addresses/1.json
   def update
-    
-    @address = Address.find(params[:id])
+    @contact = Contact.find(params[:contact_id])
+    @address = @contact.addresses.new({ :contact_id => params[:contact_id], :street => params[:address][:street], :city => params[:address][:city], :zip => params[:address][:zip], :region => params[:address][:region], :country => params[:country][:code]})
 
     respond_to do |format|
       if @address.update_attributes(params[:address])
-        format.html { redirect_to @address, notice: 'Address was successfully updated.' }
+        format.html { redirect_to @contact, notice: 'Address was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -27,10 +27,10 @@
 <th> Zip </th>
 <th> Country </th>
 </tr>
- contact address: <%=@contact.addresses(@contact) %>
+
 	<% @contact.addresses.each do |address| %>
 		<tr>
-			<td> <%= address.street %></td>
+			<td> <%= link_to address.street, edit_contact_address_path(@contact) %></td>
 			<td> <%= address.city %> </td>
 			<td> <%= address.region %> </td>
 			<td> <%= address.zip %> </td>
@@ -38,7 +38,7 @@
 		</tr>	
 	<% end %>
 </table>
-<!-- "/n" address.country "/n" address.zip -->
+
 
 
 <%= link_to 'Edit', edit_contact_path(@contact) %> |
